@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TravelMate AI - Smart Bus Booking Assistant</title>
+  <link rel="stylesheet" href="sidepanel.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="sidepanel-container">
+    <!-- Top Header Bar -->
+    <header class="sp-header">
+      <div class="sp-branding">
+        <div class="sp-logo-badge" title="Bus Booking Bot">
+          <img class="sp-agent-head-img" src="./assets/agent-logo.png" alt="Bus Booking Bot" />
+        </div>
+        <div class="sp-title-group">
+          <div class="sp-title-row">
+            <h1 class="sp-title">Bus Booking <span class="ai-gold-text">Bot</span></h1>
+          </div>
+          <p class="sp-subtitle">I Book Buses! • Your AI Assistant</p>
+        </div>
+      </div>
+
+      <div class="sp-header-actions">
+        <!-- History Icon Button -->
+        <button class="sp-icon-circle-btn" id="spHistoryBtn" title="Booking History & Live Status">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+            <path d="M3 3v5h5"/>
+            <path d="M12 7v5l4 2"/>
+          </svg>
+        </button>
+        <!-- Settings/Profile Toggle Button -->
+        <button class="sp-icon-circle-btn" id="profileToggleBtn" title="Traveler Profile & Preferences">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+        <!-- Close/Status Button -->
+        <button class="sp-icon-circle-btn" id="spCloseBtn" title="Tab Connection Status">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation Pill Tabs -->
+    <nav class="sp-nav-tabs">
+      <button class="nav-tab active" id="navBookBusBtn">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6C4 4.9 4.9 4 6 4H18C19.1 4 20 4.9 20 6V17C20 18.1 19.1 19 18 19H6C4.9 19 4 18.1 4 17V6Z" />
+          <path d="M4 11H20" />
+          <circle cx="7.5" cy="15.5" r="1.5" />
+          <circle cx="16.5" cy="15.5" r="1.5" />
+        </svg>
+        <span>Book Bus</span>
+      </button>
+      <button class="nav-tab" id="navMyTripsBtn">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 9a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V9z"/>
+          <path d="M9 6v12"/>
+          <path d="M15 6v12"/>
+        </svg>
+        <span>My Trips</span>
+      </button>
+      <button class="nav-tab" id="navSavedBtn">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+        </svg>
+        <span>Saved</span>
+      </button>
+      <button class="nav-tab" id="navPreferencesBtn">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="4" y1="21" x2="4" y2="14"/>
+          <line x1="4" y1="10" x2="4" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="12"/>
+          <line x1="12" y1="8" x2="12" y2="3"/>
+          <line x1="20" y1="21" x2="20" y2="16"/>
+          <line x1="20" y1="12" x2="20" y2="3"/>
+          <line x1="1" y1="14" x2="7" y2="14"/>
+          <line x1="9" y1="8" x2="15" y2="8"/>
+          <line x1="17" y1="16" x2="23" y2="16"/>
+        </svg>
+        <span>Preferences</span>
+      </button>
+    </nav>
+
+    <!-- Hero Greeting & Custom AI Agent Artwork -->
+    <div class="sp-hero-banner">
+      <div class="sp-hero-content">
+        <h2 class="sp-hero-greeting">Hi <span class="gold-accent-name" id="userGreetingName">Hemal</span> <span class="wave-hand">👋</span></h2>
+        <p class="sp-hero-sub">I'm your Bus Booking Bot! Plan, compare and book bus tickets instantly.</p>
+      </div>
+      <div class="sp-hero-art">
+        <img class="hero-robot-full" src="./assets/agent-full.png" alt="Bus Booking Bot - I Book Buses!" />
+      </div>
+    </div>
+
+    <!-- Active Route Glass Banner -->
+    <div class="sp-route-bar" id="routeBar">
+      <div class="route-info">
+        <div class="route-cities-row">
+          <span class="route-pin-icon">📍</span>
+          <span class="route-cities" id="routeCities">Ready to plan your journey</span>
+        </div>
+        <div class="route-date-row">
+          <span class="route-cal-icon">📅</span>
+          <span class="route-date" id="routeDate">Any travel date</span>
+        </div>
+      </div>
+      <button class="scan-live-btn" id="scanLiveBtn" title="Scan & Rank live buses on current page">
+        <svg class="icon-scan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+          <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+          <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+          <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+        <span>Scan Page</span>
+      </button>
+    </div>
+
+    <!-- Quick Destination Suggestion Pills -->
+    <div class="sp-chips">
+      <button class="chip" data-query="Chennai to Bangalore tomorrow AC sleeper cheapest">
+        <span class="chip-dot"></span>Bangalore AC
+      </button>
+      <button class="chip" data-query="Chennai to Coimbatore night AC sleeper for December 1st">
+        <span class="chip-dot"></span>Coimbatore Dec 1
+      </button>
+      <button class="chip" data-query="Chennai to Madurai tomorrow Primo sleeper">
+        <span class="chip-dot"></span>Madurai Primo
+      </button>
+      <button class="chip" data-query="Bangalore to Hyderabad AC sleeper night">
+        <span class="chip-dot"></span>Hyderabad Night
+      </button>
+    </div>
+
+    <!-- Main Chat & Pipeline Stream -->
+    <main class="sp-chat-window" id="chatWindow">
+      <!-- Welcome Message Card: AI Capabilities Guarantee -->
+      <div class="sp-msg bot">
+        <div class="sp-bubble welcome-card">
+          <div class="welcome-header">
+            <div class="sparkle-circle">
+              <span class="gold-sparkle-star">✨</span>
+            </div>
+            <div>
+              <h3 class="welcome-title"><span class="gold-text">AI will:</span></h3>
+            </div>
+          </div>
+          <div class="welcome-checklist">
+            <div class="check-item">
+              <span class="gold-check">✔</span>
+              <span>Compare all available buses</span>
+            </div>
+            <div class="check-item">
+              <span class="gold-check">✔</span>
+              <span>Pick the best option (price • rating • time • comfort)</span>
+            </div>
+            <div class="check-item">
+              <span class="gold-check">✔</span>
+              <span>Select seat and fill the details for you</span>
+            </div>
+            <div class="check-item">
+              <span class="gold-check">✔</span>
+              <span>Take you to the payment page</span>
+            </div>
+          </div>
+          <div class="welcome-prompt-hint">
+            <span>💡 Try: <em>"Find cheapest AC Sleeper from Chennai to Madurai tomorrow"</em></span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Floating Action Toolbar -->
+    <div class="sp-tools-bar">
+      <button class="tool-btn" id="autofillBtn" title="Auto-fill your details on RedBus checkout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+        </svg>
+        <span>Auto-Fill</span>
+      </button>
+      <button class="tool-btn" id="couponsBtn" title="View available verified promo codes">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+          <circle cx="8" cy="12" r="1.5"></circle>
+          <circle cx="16" cy="12" r="1.5"></circle>
+          <path d="M12 8v8" stroke-dasharray="2 2"></path>
+        </svg>
+        <span>Coupons</span>
+      </button>
+      <button class="tool-btn primary" id="launchAgentBtn" title="Auto-Book Top Pick Bus in Current Tab">
+        <span class="sparkle-gold">✨</span>
+        <span>Find & Book with AI &rarr;</span>
+      </button>
+    </div>
+
+    <!-- Hidden tab status fallback for background polling -->
+    <div id="tabStatus" style="display: none;">
+      <span class="status-dot"></span>
+      <span id="tabStatusText">Active</span>
+    </div>
+
+    <!-- Chat Input Composer -->
+    <footer class="sp-composer">
+      <button class="sp-mic-btn" id="voiceBtn" title="Speak to TravelMate AI">
+        <svg class="icon-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+          <line x1="12" y1="19" x2="12" y2="23"></line>
+          <line x1="8" y1="23" x2="16" y2="23"></line>
+        </svg>
+      </button>
+      <div class="sp-input-wrapper">
+        <input type="text" id="userInput" placeholder="Ask TravelMate: e.g. Chennai to Madurai sleeper..." autocomplete="off" />
+      </div>
+      <button class="sp-send-btn" id="sendBtn" title="Send request">
+        <svg class="icon-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </footer>
+
+    <!-- Traveler Profile Modal Drawer -->
+    <div class="sp-modal hidden" id="profileModal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title-row">
+            <div class="modal-icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <div>
+              <h3>Traveler Information</h3>
+              <p class="modal-sub">Used for instant 1-click checkout auto-fill</p>
+            </div>
+          </div>
+          <button class="modal-close" id="closeProfileBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group">
+            <label>Full Passenger Name</label>
+            <input type="text" id="profName" placeholder="e.g. Hemal Patel" />
+          </div>
+          <div class="modal-row">
+            <div class="input-group">
+              <label>Age</label>
+              <input type="number" id="profAge" placeholder="28" min="1" max="120" />
+            </div>
+            <div class="input-group">
+              <label>Gender</label>
+              <select id="profGender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-group">
+            <label>Mobile Number (For SMS Ticket & OTP)</label>
+            <input type="tel" id="profPhone" placeholder="9876543210" />
+          </div>
+          <div class="input-group">
+            <label>Email Address</label>
+            <input type="email" id="profEmail" placeholder="hemal@example.com" />
+          </div>
+          <div class="modal-row">
+            <div class="input-group">
+              <label>State / Region</label>
+              <input type="text" id="profState" placeholder="Tamil Nadu" />
+            </div>
+            <div class="input-group">
+              <label>Bus Preference</label>
+              <select id="profCategory">
+                <option value="SLEEPER">AC Sleeper</option>
+                <option value="SEATER">AC Seater</option>
+                <option value="ANY">Any Category</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="save-profile-btn" id="saveProfileBtn">Save Profile Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

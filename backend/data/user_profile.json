@@ -1,0 +1,12 @@
+{
+  "passenger_name": "",
+  "passenger_age": 0,
+  "passenger_gender": "",
+  "passenger_phone": "",
+  "passenger_email": "",
+  "seat_preference": "ANY",
+  "bus_preference": "ANY",
+  "state_name": "",
+  "boarding_point": "",
+  "dropping_point": ""
+}

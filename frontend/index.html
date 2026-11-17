@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TravelMate AI - Smart Bus Booking Assistant</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="chat-panel">
+        <div class="panel-header">
+          <div class="brand-row">
+            <div class="brand-bus-badge">
+              <img class="travelmate-bus-svg" src="/static/images/travelmate-agent-bus.svg" alt="TravelMate Agent bus icon" />
+            </div>
+            <div>
+              <p class="eyebrow">Your Smart Bus Booking Assistant</p>
+              <h1>TravelMate <span class="ai-gold">AI</span></h1>
+            </div>
+          </div>
+          <span class="status-pill online">Live</span>
+        </div>
+
+        <div class="quick-actions" id="quickActions">
+          <button class="chip" data-prompt="Chennai to Bangalore tomorrow">Chennai → Bangalore</button>
+          <button class="chip" data-prompt="Hyderabad to Pune this Friday">Hyderabad → Pune</button>
+          <button class="chip" data-prompt="Delhi to Jaipur next Monday">Delhi → Jaipur</button>
+        </div>
+
+        <div class="chat-window" id="chatWindow">
+          <div class="message bot" data-role="bot">
+            <div class="bubble">
+              Hi! I'm your autonomous <strong>TravelMate AI</strong> booking assistant. Tell me your trip details (e.g., “AC Sleeper Chennai to Madurai tomorrow, window seat”).
+            </div>
+          </div>
+        </div>
+
+        <div class="composer">
+          <button id="voiceBtn" class="mic-button" aria-label="Use voice input">🎙️</button>
+          <input id="userInput" type="text" placeholder="Describe your trip: e.g. Chennai to Madurai tomorrow..." />
+          <button id="sendBtn" class="send-button">Send</button>
+        </div>
+      </aside>
+
+      <main class="obs-panel">
+        <div class="summary-card" id="planCard">
+          <div class="card-header">
+            <h2>Booking Summary</h2>
+            <button id="executeBtn" class="execute-button"><span>✨ Find & Book Best Bus with AI &rarr;</span></button>
+          </div>
+          <div id="planSummary" class="summary-body">
+            <p>No booking plan yet. Ask TravelMate for a route and date.</p>
+          </div>
+        </div>
+
+        <div class="stepper-card">
+          <div class="card-header small-header">
+            <h3>11-Step Booking Pipeline</h3>
+          </div>
+          <div id="stepper" class="stepper" aria-live="polite"></div>
+          <div id="otpBanner" class="otp-banner hidden">
+            <strong>OTP pause:</strong> Please enter the SMS OTP in the browser window to continue to the payment page.
+          </div>
+        </div>
+
+        <div class="telemetry-card">
+          <div class="card-header small-header">
+            <h3>UMS Observability & Guardrails</h3>
+            <span id="telemetryStatus" class="status-pill idle">Idle</span>
+          </div>
+          <ul id="telemetryList" class="telemetry-list">
+            <li class="empty-item">Waiting for execution logs...</li>
+          </ul>
+        </div>
+
+        <div class="coupon-card">
+          <div class="card-header small-header">
+            <h3>Retrieved RAG Coupons</h3>
+          </div>
+          <div id="couponList" class="coupon-list">
+            <div class="coupon-empty">No coupons retrieved yet.</div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

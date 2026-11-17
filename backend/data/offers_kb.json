@@ -1,0 +1,64 @@
+{
+  "offers": [
+    {
+      "code": "REDBUSFEST",
+      "title": "RedBus Fest Offer",
+      "description": "Flat 10% off on AC and overnight bus tickets for selected routes.",
+      "rules": "Applicable on first-time bookings with valid promo code.",
+      "min_fare": 350,
+      "routes": ["Chennai", "Bangalore", "Hyderabad", "Pune", "Coimbatore"],
+      "conditions": ["AC travel", "bus ticket", "available on selected routes"],
+      "category": "general"
+    },
+    {
+      "code": "HSBCRAIL",
+      "title": "HSBC Rail Discount",
+      "description": "Exclusive savings on premium sleeper and AC coach bookings for HSBC card users.",
+      "rules": "Use card-linked discount on eligible routes during the campaign period.",
+      "min_fare": 500,
+      "routes": ["Bangalore", "Chennai", "Coimbatore", "Hyderabad"],
+      "conditions": ["card users", "premium buses", "sleeper"],
+      "category": "bank"
+    },
+    {
+      "code": "WEEKEND10",
+      "title": "Weekend Voyage",
+      "description": "10% instant discount on weekend travel for state-to-state routes.",
+      "rules": "Valid for bookings made on Friday to Sunday departures.",
+      "min_fare": 280,
+      "routes": ["Chennai", "Bangalore", "Madurai", "Trichy", "Salem"],
+      "conditions": ["weekend", "instant discount", "state travel"],
+      "category": "weekend"
+    },
+    {
+      "code": "SLEEPOFF",
+      "title": "Sleeper Saver",
+      "description": "Extra cashback on sleeper buses for long-distance overnight journeys.",
+      "rules": "Minimum fare constraint applies; best for overnight premium sleeper trips.",
+      "min_fare": 600,
+      "routes": ["Bangalore", "Chennai", "Hyderabad", "Coimbatore"],
+      "conditions": ["sleeper", "overnight", "long distance"],
+      "category": "sleeper"
+    },
+    {
+      "code": "FIRSTTRIP",
+      "title": "First Trip Booster",
+      "description": "New user special on initial bus booking for festival and interstate travel.",
+      "rules": "Applies to the first booking only and may require valid new-user signin.",
+      "min_fare": 450,
+      "routes": ["Bangalore", "Chennai", "Madurai", "Salem", "Pune"],
+      "conditions": ["first booking", "interstate", "new users"],
+      "category": "new_user"
+    },
+    {
+      "code": "ROUTE500",
+      "title": "Route 500",
+      "description": "Flat ₹500 off on selected high-traffic routes for travel over 400 km.",
+      "rules": "Only valid on bookings above the minimum fare threshold and selected route corridors.",
+      "min_fare": 800,
+      "routes": ["Chennai", "Bangalore", "Hyderabad", "Pune", "Coimbatore"],
+      "conditions": ["selected routes", "500 off", "high traffic"],
+      "category": "route"
+    }
+  ]
+}
